@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FORM VALIDATION</title>
+        <style>
+            .error{border: 1px solid red;}
+        </style>
+    </head>
+    <body>
+        <h1>FORM VALIDATION</h1>
+        <form id="myForm" onsubmit="return validateForm()">
+            <label for="name">NAME:</label><br>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <label for="dob">DOB:</label><br>
+            <input type="date" id="dob" name="dob" required>
+            <br><br>
+            <label for="email">EMAIL:</label><br>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+            <input type="submit" value="submit">SUBMIT</input><br><br>
+            <input type="reset" value="reset">RESET</input>
+        </form>
+        <script>
+            function validateForm()
+            {
+                var name=document.getElementById('name').value;
+                var dob=document.getElementById('dob').value;
+                var email=document.getElementById('email').value;
+                var isvalid=true;
+                if(!name.trim() || !/^[a-zA-Z]+$/.test(name))
+                {
+                    isvalid=false;
+                    alert("Enter valid name");
+                    document.getElementById('name').ClassList.add('error');
+                }
+                else
+                {
+                    document.getElementById('name').classList.remove('error');
+                }
+                if(!dob)
+                {
+                    isvalid=false;
+                    alert("Enter valid dob");
+                    document.getElementById('dob').ClassList.add('error');
+                }
+                else
+                {
+                    document.getElementById('dob').classList.remove('error');
+                }
+                if(!email.trim() || !email.includes('@'))
+                {
+                    isvalid=false;
+                    alert("Enter valid email");
+                    document.getElementById('email').ClassList.add('error');
+                }
+                else
+                {
+                    document.getElementById('email').classList.remove('error');
+                }
+                return isvalid;
+            }
+        </script>
+    </body>
+</html>
